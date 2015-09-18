@@ -170,12 +170,12 @@
                    L.latLng(originLng, originLat),
                    L.latLng(destinationLng, destinationLat)
                 ],
-                router: L.Routing.valhalla('valhalla-rRUHtYw', 'pedestrian'),
-                formatter: new L.Routing.Valhalla.Formatter({ units: 'imperial' }),
+                router: L.Routing.valhalla('valhalla-rRUHtYw', 'pedestrian'/*, { pedestrian: { step_penalty: 10, alley_factor: 0.1, driveway_factor:10 } }*/),
+                formatter: new L.Routing.Valhalla.Formatter({ units: 'imperial'}),
                 routeWhileDragging: false, autoRoute: true
             }).addTo(map);//demo_layer
 
-            r//outeControl.spliceWaypoints(0, 1);
+           // r//outeControl.spliceWaypoints(0, 1);
         }
 
 
