@@ -45,10 +45,32 @@
         var directionsApiUrlGraphHopper = "https://graphhopper.com/api/1/route?key=d297d5f6-8ff0-405f-b15b-51966ee041e6&vehicle=foot&type=json&points_encoded=false";
 
         //   origin=Toronto&destination=Montreal&;
-        var nearestPcsObjects = JSON.parse(nearestPcs);
+        var nearestPcsObjects;
 
         var centralCampus = [52.45049111433046, -1.9307774305343628];
         var pcsUrl = "http://www.birmingham.ac.uk/web_services/Clusters.svc/nearestpc?lat=" + centralCampus[0] + "&long=" + centralCampus[1];
+
+
+        $.ajax({
+            url: pcsUrl,
+            dataType: 'json',
+            success: function(data) {
+                if (data)
+                    nearestPcsObjects = JSON.parse(data);
+                else
+                    nearestPcsObjects = JSON.parse(nearestPcs);
+
+                setUpMap();
+            },
+            error: function(error) {
+                console.log("error fetching json pc data");
+                nearestPcsObjects = JSON.parse(nearestPcs);
+                setUpMap();
+            }
+        });
+
+
+
 
 
         var rad = function (x) {
@@ -163,22 +185,24 @@
         }).addTo(map);
 
 
-        var spinIcon = L.AwesomeMarkers.icon({ icon: 'male', prefix: 'fa', markerColor: 'blue', spin: true });
-        var pcIcon = L.AwesomeMarkers.icon({ icon: 'desktop', prefix: 'fa', markerColor: 'green' });
-        var pcIconNone = L.AwesomeMarkers.icon({ icon: 'desktop', prefix: 'fa', markerColor: 'red' });
-        L.marker(centralCampus, { icon: spinIcon }).addTo(map);
+        var setUpMap = function() {
+            var spinIcon = L.AwesomeMarkers.icon({ icon: 'male', prefix: 'fa', markerColor: 'blue', spin: true });
+            var pcIcon = L.AwesomeMarkers.icon({ icon: 'desktop', prefix: 'fa', markerColor: 'green' });
+            var pcIconNone = L.AwesomeMarkers.icon({ icon: 'desktop', prefix: 'fa', markerColor: 'red' });
+            L.marker(centralCampus, { icon: spinIcon }).addTo(map);
 
-        if (nearestPcsObjects) {
-            for (var i = 0; i < nearestPcsObjects.length; i++) {
+            if (nearestPcsObjects) {
+                for (var i = 0; i < nearestPcsObjects.length; i++) {
 
-                var item = nearestPcsObjects[i];
-                var distanceAway = getDistance(convertArrayToMapPoint(item.CoordinatesArray), convertArrayToMapPoint(centralCampus));
+                    var item = nearestPcsObjects[i];
+                    var distanceAway = getDistance(convertArrayToMapPoint(item.CoordinatesArray), convertArrayToMapPoint(centralCampus));
 
-                var info = "<div>" + item.FacilityName + "</div><div>Availible PCs: " + item.NoOfPcsFree + "</div><div>Distance: " + distanceAway + " meters</div><div>approx " + convertDistanceToAverageWalkSpeed(distanceAway) + "</div><div><button onclick='javascript:getDirections( " + centralCampus[0] + ", " + centralCampus[1] + ", " + item.CoordinatesArray[0] + ", " + item.CoordinatesArray[1] + ");'>Directions</button></div>";
+                    var info = "<div>" + item.FacilityName + "</div><div>Availible PCs: " + item.NoOfPcsFree + "</div><div>Distance: " + distanceAway + " meters</div><div>approx " + convertDistanceToAverageWalkSpeed(distanceAway) + "</div><div><button onclick='javascript:getDirections( " + centralCampus[0] + ", " + centralCampus[1] + ", " + item.CoordinatesArray[0] + ", " + item.CoordinatesArray[1] + ");'>Directions</button></div>";
 
 
-                L.marker(item.CoordinatesArray, { icon: item.NoOfPcsFree <= 0 ? pcIconNone : pcIcon }).bindPopup(info).addTo(map);
+                    L.marker(item.CoordinatesArray, { icon: item.NoOfPcsFree <= 0 ? pcIconNone : pcIcon }).bindPopup(info).addTo(map);
+                }
             }
-        }
+        };
     </script>
 }
