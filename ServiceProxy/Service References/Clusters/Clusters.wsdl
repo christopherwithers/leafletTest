@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Clusters" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://www.birmingham.ac.uk/web_services/Clusters.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://www.birmingham.ac.uk/web_services/Clusters.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://www.birmingham.ac.uk/web_services/Clusters.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/UniBirmingham.Web.Services.DataContracts" />
+      <xsd:import schemaLocation="http://www.birmingham.ac.uk/web_services/Clusters.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IClusters_GetClusters_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClusters" />
+  </wsdl:message>
+  <wsdl:message name="IClusters_GetClusters_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClustersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClusters_GetMapsWithClusters_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMapsWithClusters" />
+  </wsdl:message>
+  <wsdl:message name="IClusters_GetMapsWithClusters_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMapsWithClustersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClusters_GetBuildingsWithClusters_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBuildingsWithClusters" />
+  </wsdl:message>
+  <wsdl:message name="IClusters_GetBuildingsWithClusters_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBuildingsWithClustersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClusters_GetClustersForBuildingOrderedAlphabetically_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClustersForBuildingOrderedAlphabetically" />
+  </wsdl:message>
+  <wsdl:message name="IClusters_GetClustersForBuildingOrderedAlphabetically_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClustersForBuildingOrderedAlphabeticallyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClusters_GetNearestClusters_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNearestClusters" />
+  </wsdl:message>
+  <wsdl:message name="IClusters_GetNearestClusters_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNearestClustersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClusters_GetNearestClustersWithPcData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNearestClustersWithPcData" />
+  </wsdl:message>
+  <wsdl:message name="IClusters_GetNearestClustersWithPcData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNearestClustersWithPcDataResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IClusters">
+    <wsdl:operation name="GetClusters">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClusters/GetClusters" message="tns:IClusters_GetClusters_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClusters/GetClustersResponse" message="tns:IClusters_GetClusters_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMapsWithClusters">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClusters/GetMapsWithClusters" message="tns:IClusters_GetMapsWithClusters_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClusters/GetMapsWithClustersResponse" message="tns:IClusters_GetMapsWithClusters_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBuildingsWithClusters">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClusters/GetBuildingsWithClusters" message="tns:IClusters_GetBuildingsWithClusters_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClusters/GetBuildingsWithClustersResponse" message="tns:IClusters_GetBuildingsWithClusters_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClustersForBuildingOrderedAlphabetically">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClusters/GetClustersForBuildingOrderedAlphabetically" message="tns:IClusters_GetClustersForBuildingOrderedAlphabetically_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClusters/GetClustersForBuildingOrderedAlphabeticallyResponse" message="tns:IClusters_GetClustersForBuildingOrderedAlphabetically_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNearestClusters">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClusters/GetNearestClusters" message="tns:IClusters_GetNearestClusters_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClusters/GetNearestClustersResponse" message="tns:IClusters_GetNearestClusters_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNearestClustersWithPcData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClusters/GetNearestClustersWithPcData" message="tns:IClusters_GetNearestClustersWithPcData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClusters/GetNearestClustersWithPcDataResponse" message="tns:IClusters_GetNearestClustersWithPcData_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="Clusters" />
+</wsdl:definitions>

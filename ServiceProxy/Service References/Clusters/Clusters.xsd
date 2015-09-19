@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/UniBirmingham.Web.Services.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/UniBirmingham.Web.Services.DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://www.birmingham.ac.uk/web_services/Clusters.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="FacilityEntryCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FacilityEntry" nillable="true" type="tns:FacilityEntry" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FacilityEntryCollection" nillable="true" type="tns:FacilityEntryCollection" />
+  <xs:complexType name="FacilityEntry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BuildingId" type="xs:int" />
+      <xs:element minOccurs="0" name="CategoryAsTaxonomyIds" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContentId" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CoordinatesArray" nillable="true" type="q1:ArrayOfdouble" />
+      <xs:element minOccurs="0" name="FacilityImageFullUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FacilityLocationAsTaxonomyIds" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FacilityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FacilityWebPage" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FacilityEntry" nillable="true" type="tns:FacilityEntry" />
+  <xs:complexType name="MapEntryCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MapEntry" nillable="true" type="tns:MapEntry" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MapEntryCollection" nillable="true" type="tns:MapEntryCollection" />
+  <xs:complexType name="MapEntry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ContentId" type="xs:int" />
+      <xs:element minOccurs="0" name="DefaultMap" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MapName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NorthEastLatitude" type="xs:double" />
+      <xs:element minOccurs="0" name="NorthEastLongitude" type="xs:double" />
+      <xs:element minOccurs="0" name="SouthWestLatitude" type="xs:double" />
+      <xs:element minOccurs="0" name="SouthWestLongitude" type="xs:double" />
+      <xs:element minOccurs="0" name="TaxonomyKey" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MapEntry" nillable="true" type="tns:MapEntry" />
+  <xs:complexType name="BuildingEntryCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BuildingEntry" nillable="true" type="tns:BuildingEntry" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BuildingEntryCollection" nillable="true" type="tns:BuildingEntryCollection" />
+  <xs:complexType name="BuildingEntry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BuildingCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BuildingImageFullUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BuildingName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CategoryAsTaxonomyIds" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Colour" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContentId" type="xs:int" />
+      <xs:element minOccurs="0" name="LocationAsTaxonomyIds" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PolygonCoordinatesAsArrayList" nillable="true" type="q2:ArrayOfArrayOfdouble" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BuildingEntry" nillable="true" type="tns:BuildingEntry" />
+  <xs:complexType name="ClusterCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClusterDetail" nillable="true" type="tns:ClusterDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClusterCollection" nillable="true" type="tns:ClusterCollection" />
+  <xs:complexType name="ClusterDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FacilityDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DistanceTo" type="xs:double" />
+          <xs:element minOccurs="0" name="NoOfPcsFree" type="xs:int" />
+          <xs:element minOccurs="0" name="RbRoomId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RoomBooked" type="xs:boolean" />
+          <xs:element minOccurs="0" name="RoomId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ClusterDetail" nillable="true" type="tns:ClusterDetail" />
+  <xs:complexType name="FacilityDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FacilityEntry">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FacilityDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OpeningHours" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PcAvailabilityCluster" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FacilityDetail" nillable="true" type="tns:FacilityDetail" />
+</xs:schema>

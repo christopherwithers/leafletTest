@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e3a5e730-f215-4c7e-8ef9-d2a84b61e726" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>true</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://www.birmingham.ac.uk/web_services/Clusters.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Clusters.wsdl" MetadataType="Wsdl" ID="6ac3e01e-f475-4a86-a057-f00b06d30e78" SourceId="1" SourceUrl="http://www.birmingham.ac.uk/web_services/Clusters.svc" />
+    <MetadataFile FileName="Clusters.xsd" MetadataType="Schema" ID="0c9f56b3-fbe9-4c02-9ad3-91517072824d" SourceId="1" SourceUrl="http://www.birmingham.ac.uk/web_services/Clusters.svc?xsd=xsd2" />
+    <MetadataFile FileName="Clusters1.xsd" MetadataType="Schema" ID="1604161c-5d65-4710-a430-3f6bbb8e6d89" SourceId="1" SourceUrl="http://www.birmingham.ac.uk/web_services/Clusters.svc?xsd=xsd1" />
+    <MetadataFile FileName="Clusters2.xsd" MetadataType="Schema" ID="afb2ade7-5b6c-48c5-af1c-16e381638923" SourceId="1" SourceUrl="http://www.birmingham.ac.uk/web_services/Clusters.svc?xsd=xsd0" />
+    <MetadataFile FileName="Clusters3.xsd" MetadataType="Schema" ID="cedc6f3a-ac26-4ad0-a9dd-e672e9934421" SourceId="1" SourceUrl="http://www.birmingham.ac.uk/web_services/Clusters.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
