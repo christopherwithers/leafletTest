@@ -125,6 +125,7 @@
     <None Include="Properties\PublishProfiles\PcAvailabilityTest.pubxml" />
     <Content Include="Views\_LayoutPage.cshtml" />
     <Content Include="Views\Maps\Leaflet.cshtml" />
+    <Content Include="Views\Maps\LeafletCluster.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

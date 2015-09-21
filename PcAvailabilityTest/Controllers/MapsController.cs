@@ -13,5 +13,10 @@ namespace PcAvailabilityTest.Controllers
         {
             return View();
         }
+
+        public ActionResult LeafletCluster()
+        {
+            return View();
+        }
     }
 }
