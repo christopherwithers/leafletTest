@@ -5,14 +5,13 @@
 
 @section Header
 {
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css">
-    <link href="~/Styles/leaflet.awesome-markers.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css" />
-
-    <link href="~/Styles/leaflet-routing-machine.css" rel="stylesheet" />
+    <link href="/Styles/font-awesome.4.4.0.css" rel="stylesheet" />
+    <link href="/Styles/leaflet.awesome-markers.css" rel="stylesheet" />
+    <link href="/Styles/leaflet.css" rel="stylesheet" />
+    <link href="/Styles/leaflet-routing-machine.css" rel="stylesheet" />
 
     <!--[if lte IE 8]>
-        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+        <link href="~/Styles/leaflet.ie.css" rel="stylesheet"/>
     <![endif]-->
 
     <style>
@@ -24,19 +23,18 @@
     </style>
 }
 
+
+
+
 <div id="map"></div>
 
 @section Scripts
 {
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/Scripts/jquery.1.9.1.min.js"></script>
+    <script src="/Scripts/leaflet.js"></script>
+    <script src="/Scripts/leaflet.awesome-markers.js"></script>
+    <script src="/Scripts/leaflet-routing-machine.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
-    <script src="~/Scripts/leaflet.awesome-markers.js"></script>
-
-
-
-
-    <script src="~/Scripts/leaflet-routing-machine.js"></script>
 
     <script src="~/Scripts/lrm-valhalla.js"></script>
     <script>
@@ -55,7 +53,7 @@
         $.ajax({
             url: pcsUrl,
             dataType: 'json',
-            success: function(data) {
+            success: function (data) {
                 if (data)
                     nearestPcsObjects = JSON.parse(data);
                 else
@@ -63,7 +61,7 @@
 
                 setUpMap();
             },
-            error: function(error) {
+            error: function (error) {
                 console.log("error fetching json pc data");
                 nearestPcsObjects = JSON.parse(nearestPcs);
                 setUpMap();
@@ -71,11 +69,11 @@
         });
 
 
-        var rad = function(x) {
+        var rad = function (x) {
             return x * Math.PI / 180;
         };
 
-        var getDistance = function(p1, p2) {
+        var getDistance = function (p1, p2) {
             var R = 6378137; // Earth’s mean radius in meter
             var dLat = rad(p2.lat - p1.lat);
             var dLong = rad(p2.lng - p1.lng);
@@ -88,7 +86,7 @@
             return Math.round(d); // returns the distance in meter
         };
 
-        var convertArrayToMapPoint = function(longLatArray) {
+        var convertArrayToMapPoint = function (longLatArray) {
             if (!longLatArray)
                 return null;
 
@@ -100,7 +98,7 @@
             return geo;
         }
 
-        var convertDistanceToAverageWalkSpeed = function(distance) {
+        var convertDistanceToAverageWalkSpeed = function (distance) {
             var averageMetersPerMinute = 60;
 
             var result = distance / averageMetersPerMinute;
@@ -157,7 +155,7 @@
         var routeControl;
 
 
-        var getDirections = function(originLng, originLat, destinationLng, destinationLat) {
+        var getDirections = function (originLng, originLat, destinationLng, destinationLat) {
 
             if (routeControl)
                 map.removeControl(routeControl);
@@ -185,10 +183,10 @@
 
         var nearestPcClusters = {};
 
-        var parseClusters = function() {
-              
+        var parseClusters = function () {
+
             if (nearestPcsObjects) {
-                
+
                 nearestPcClusters = {};
                 for (var i = 0; i < nearestPcsObjects.length; i++) {
 
@@ -197,13 +195,13 @@
                     else
                         nearestPcClusters[nearestPcsObjects[i].BuildingId].NoOfPcsFree += nearestPcsObjects[i].NoOfPcsFree;
 
-                 //   console.log("here");
+                    //   console.log("here");
                 }
             }
         };
 
 
-        var setUpMap = function() {
+        var setUpMap = function () {
             var spinIcon = L.AwesomeMarkers.icon({ icon: 'male', prefix: 'fa', markerColor: 'blue', spin: true });
             var pcIcon = L.AwesomeMarkers.icon({ icon: 'desktop', prefix: 'fa', markerColor: 'green' });
             var pcIconNone = L.AwesomeMarkers.icon({ icon: 'desktop', prefix: 'fa', markerColor: 'red' });
@@ -211,7 +209,7 @@
 
             // if (nearestPcClusters == null)
             parseClusters();
-        //    console.log(nearestPcClusters);
+            //    console.log(nearestPcClusters);
 
             for (var key in nearestPcClusters) {
                 if (nearestPcClusters.hasOwnProperty(key)) {

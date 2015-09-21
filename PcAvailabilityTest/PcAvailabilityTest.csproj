@@ -92,10 +92,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\images\layers-2x.png" />
+    <Content Include="Scripts\images\layers.png" />
+    <Content Include="Scripts\images\leaflet.routing.icons.png" />
+    <Content Include="Scripts\images\marker-icon-2x.png" />
+    <Content Include="Scripts\images\marker-icon.png" />
+    <Content Include="Scripts\images\marker-shadow.png" />
+    <Content Include="Scripts\images\markers-matte%402x.png" />
+    <Content Include="Scripts\images\markers-matte.png" />
+    <Content Include="Scripts\images\markers-plain.png" />
+    <Content Include="Scripts\images\markers-shadow%402x.png" />
+    <Content Include="Scripts\images\markers-shadow.png" />
+    <Content Include="Scripts\images\markers-soft%402x.png" />
+    <Content Include="Scripts\images\markers-soft.png" />
+    <Content Include="Scripts\leaflet.js" />
     <Content Include="Scripts\lrm-valhalla.js" />
     <Content Include="Scripts\leaflet-routing-machine.js" />
     <Content Include="Scripts\leaflet.awesome-markers.js" />
     <Content Include="Scripts\leaflet.markercluster-src.js" />
+    <Content Include="Styles\font-awesome.4.4.0.css" />
     <Content Include="Styles\images\leaflet.routing.icons.png" />
     <Content Include="Styles\images\markers-matte%402x.png" />
     <Content Include="Styles\images\markers-matte.png" />
@@ -106,6 +121,8 @@
     <Content Include="Styles\images\markers-soft.png" />
     <Content Include="Styles\leaflet-routing-machine.css" />
     <Content Include="Styles\leaflet.awesome-markers.css" />
+    <Content Include="Styles\leaflet.css" />
+    <Content Include="Styles\leaflet.ie.css" />
     <Content Include="Styles\MarkerCluster.css" />
     <Content Include="Styles\MarkerCluster.Default.css" />
     <Content Include="Web.config" />
@@ -122,10 +139,14 @@
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Data\NearestPcs.json" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
     <None Include="Properties\PublishProfiles\PcAvailabilityTest.pubxml" />
     <Content Include="Views\_LayoutPage.cshtml" />
     <Content Include="Views\Maps\Leaflet.cshtml" />
     <Content Include="Views\Maps\LeafletCluster.cshtml" />
+    <Content Include="Scripts\jquery.1.9.1.min.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

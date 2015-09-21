@@ -5,15 +5,14 @@
 
 @section Header
 {
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css">
-    <link href="~/Styles/leaflet.awesome-markers.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css" />
-
-    <link href="~/Styles/leaflet-routing-machine.css" rel="stylesheet" />
-    <link href="~/Styles/MarkerCluster.Default.css" rel="stylesheet" />
-    <link href="~/Styles/MarkerCluster.css" rel="stylesheet" />
+    <link href="/Styles/font-awesome.4.4.0.css" rel="stylesheet" />
+    <link href="/Styles/leaflet.awesome-markers.css" rel="stylesheet" />
+    <link href="/Styles/leaflet.css" rel="stylesheet" />
+    <link href="/Styles/leaflet-routing-machine.css" rel="stylesheet" />
+    <link href="/Styles/MarkerCluster.Default.css" rel="stylesheet" />
+    <link href="/Styles/MarkerCluster.css" rel="stylesheet" />
     <!--[if lte IE 8]>
-        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+        <link href="~/Styles/leaflet.ie.css" rel="stylesheet"/>
     <![endif]-->
 
     <style>
@@ -25,22 +24,22 @@
     </style>
 }
 
+
 <div id="map"></div>
 
 @section Scripts
 {
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
-    <script src="~/Scripts/leaflet.awesome-markers.js"></script>
-
+<script src="/Scripts/jquery.1.9.1.min.js"></script>
+    <script src="/Scripts/leaflet.js"></script>
+    <script src="/Scripts/leaflet.awesome-markers.js"></script>
 
 
 
-    <script src="~/Scripts/leaflet-routing-machine.js"></script>
 
-    <script src="~/Scripts/lrm-valhalla.js"></script>
-    <script src="~/Scripts/leaflet.markercluster-src.js"></script>
+    <script src="/Scripts/leaflet-routing-machine.js"></script>
+
+    <script src="/Scripts/lrm-valhalla.js"></script>
+    <script src="/Scripts/leaflet.markercluster-src.js"></script>
 
     <script>
         //todo: multiple buildings at same point - so need to total pcs + get individual room names!
@@ -48,7 +47,6 @@
         var directionsApiUrlGoogle = "https://maps.googleapis.com/maps/api/directions/json?key=AIzaSyAy3jXOCP_FfB91A30JuR9DoWVTQCNUQvk&mode=walking";
         var directionsApiUrlGraphHopper = "https://graphhopper.com/api/1/route?key=d297d5f6-8ff0-405f-b15b-51966ee041e6&vehicle=foot&type=json&points_encoded=false";
 
-        //   origin=Toronto&destination=Montreal&;
         var nearestPcsObjects;
 
         var centralCampus = [52.45049111433046, -1.9307774305343628];
@@ -73,88 +71,6 @@
             }
         });
 
-
-        var rad = function (x) {
-            return x * Math.PI / 180;
-        };
-
-        var getDistance = function (p1, p2) {
-            var R = 6378137; // Earth’s mean radius in meter
-            var dLat = rad(p2.lat - p1.lat);
-            var dLong = rad(p2.lng - p1.lng);
-
-            var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(rad(p1.lat)) * Math.cos(rad(p2.lat)) *
-                Math.sin(dLong / 2) * Math.sin(dLong / 2);
-            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-            var d = R * c;
-            return Math.round(d); // returns the distance in meter
-        };
-
-        var convertArrayToMapPoint = function (longLatArray) {
-            if (!longLatArray)
-                return null;
-
-            var geo = {};
-            geo.lng = longLatArray[0];
-            geo.lat = longLatArray[1];
-
-            //   console.log(geo);
-            return geo;
-        }
-
-        var convertDistanceToAverageWalkSpeed = function (distance) {
-            var averageMetersPerMinute = 60;
-
-            var result = distance / averageMetersPerMinute;
-
-            if (result < 1) {
-                return "less than a minutes walk.";
-            }
-
-            return Math.round(result) + " minutes walk.";
-        }
-
-        /*    var decodeLine = function (encoded) {
-            var len = encoded.length;
-            var index = 0;
-            var array = [];
-            var lat = 0;
-            var lng = 0;
-
-            while (index < len) {
-                var b;
-                var shift = 0;
-                var result = 0;
-                do {
-                    b = encoded.charCodeAt(index++) - 63;
-                    result |= (b & 0x1f) << shift;
-                    shift += 5;
-                } while (b >= 0x20);
-                var dlat = ((result & 1) ? ~(result >> 1) : (result >> 1));
-                lat += dlat;
-
-                shift = 0;
-                result = 0;
-                do {
-                    b = encoded.charCodeAt(index++) - 63;
-                    result |= (b & 0x1f) << shift;
-                    shift += 5;
-                } while (b >= 0x20);
-                var dlng = ((result & 1) ? ~(result >> 1) : (result >> 1));
-                lng += dlng;
-
-                array.push([lat * 1e-5, lng * 1e-5]);
-            }
-
-            return array;
-        }
-
-        var parsePoly = function (data) {
-
-        }*/
-
-
         var map = L.map('map').setView(centralCampus, 17);
 
         var routeControl;
@@ -175,9 +91,7 @@
                 formatter: new L.Routing.Valhalla.Formatter({ units: 'imperial' }),
                 routeWhileDragging: false,
                 autoRoute: true
-            }).addTo(map); //demo_layer
-
-            // r//outeControl.spliceWaypoints(0, 1);
+            }).addTo(map);
         }
 
 
@@ -186,37 +100,12 @@
         }).addTo(map);
 
 
-        var nearestPcClusters = {};
-
-        var parseClusters = function() {
-
-            if (nearestPcsObjects) {
-
-                nearestPcClusters = {};
-                for (var i = 0; i < nearestPcsObjects.length; i++) {
-
-                    if (nearestPcClusters[nearestPcsObjects[i].BuildingId] === undefined)
-                        nearestPcClusters[nearestPcsObjects[i].BuildingId] = nearestPcsObjects[i];
-                    else
-                        nearestPcClusters[nearestPcsObjects[i].BuildingId].NoOfPcsFree += nearestPcsObjects[i].NoOfPcsFree;
-
-                    //   console.log("here");
-                }
-            }
-        };
-
 
         var setUpMap = function() {
             var spinIcon = L.AwesomeMarkers.icon({ icon: 'male', prefix: 'fa', markerColor: 'blue', spin: true });
-            var pcIcon = L.AwesomeMarkers.icon({ icon: 'desktop', prefix: 'fa', markerColor: 'green' });
-            var pcIconNone = L.AwesomeMarkers.icon({ icon: 'desktop', prefix: 'fa', markerColor: 'red' });
+       
             L.marker(centralCampus, { icon: spinIcon }).addTo(map);
 
-            // if (nearestPcClusters == null)
-            //  parseClusters();
-            //    console.log(nearestPcClusters);
-
-            console.log(pcIcon);
             var markers = L.markerClusterGroup({
                 
                 maxClusterRadius: 90,
@@ -229,7 +118,7 @@
                     var n = 0;
                     for (var i = 0; i < markers.length; i++) {
                         n += markers[i].options.NoOfPcsFree;
-                        console.log(markers[i]);
+                     //   console.log(markers[i]);
                     }
 
                     var c = ' marker-cluster-';
@@ -247,31 +136,25 @@
 
             });
 
-            /*  var markers = new L.MarkerClusterGroup({
-                iconCreateFunction: function (cluster) {
-                    var markers = cluster.getAllChildMarkers();
-                    var n = 0;
-                    for (var i = 0; i < markers.length; i++) {
-                        n += markers[i].number;
-                        console.log(markers[i]);
-                    }
-                    return L.divIcon({ html: '<b>' + n + '</b>'});
-                }
-            });*/
-
-            //  markers.addLayer(new L.Marker(getRandomLatLng(map)));
 
             if (nearestPcsObjects) {
                 var markStore = [];
-                for (var i = 0; i < nearestPcsObjects.length; i++) {
 
-                    var item = nearestPcsObjects[i];
-                    var distanceAway = getDistance(convertArrayToMapPoint(item.CoordinatesArray), convertArrayToMapPoint(centralCampus));
 
-                    var info = "<div>" + item.FacilityName + "</div><div>Availible PCs: " + item.NoOfPcsFree + "</div><div>Distance: " + distanceAway + " meters</div><div>approx " + convertDistanceToAverageWalkSpeed(distanceAway) + "</div><div><button onclick='javascript:getDirections( " + centralCampus[0] + ", " + centralCampus[1] + ", " + item.CoordinatesArray[0] + ", " + item.CoordinatesArray[1] + ");'>Directions</button></div>";
+                var arraySize = nearestPcsObjects.length - 1;
 
-                    markStore[i] = new L.Marker(item.CoordinatesArray, { icon: item.NoOfPcsFree <= 0 ? pcIconNone : pcIcon, NoOfPcsFree: item.NoOfPcsFree }).bindPopup(info);
-                }
+                do {
+                    var item = nearestPcsObjects[arraySize];
+
+                    var info = "<div>" + item.FacilityName + "</div><div>Availible PCs: " + item.NoOfPcsFree + "</div><div><button onclick='javascript:getDirections( " + centralCampus[0] + ", " + centralCampus[1] + ", " + item.CoordinatesArray[0] + ", " + item.CoordinatesArray[1] + ");'>Directions</button></div>";
+
+                    var colour = item.NoOfPcsFree == 0 ? "red" : "green";
+
+                    markStore[arraySize] = new L.Marker(
+                        item.CoordinatesArray,
+                        { icon: L.AwesomeMarkers.icon({ icon: '', prefix: 'fa', markerColor: colour, html: item.NoOfPcsFree }), NoOfPcsFree: item.NoOfPcsFree }).bindPopup(info);
+                    
+                } while (arraySize--)
 
                 markers.addLayers(markStore);
 
